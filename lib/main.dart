@@ -1,6 +1,9 @@
+import 'package:click_to_food/services/data/local_services/local_service.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await StorageService.init();
   runApp(const MyApp());
 }
 

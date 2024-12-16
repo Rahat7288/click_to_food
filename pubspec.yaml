@@ -44,6 +44,7 @@ dependencies:
   fluttertoast: ^8.2.10
   http: ^1.2.2
   mockito: ^5.4.4
+  get_storage: ^2.1.1
 
 dev_dependencies:
   flutter_test:
