@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 class AppColor {
   static const Color backGroundColor = Color(0XFFFFFFFF);
-  static const Color activeProgressColor = Color(0XFF06D001);
-  static const Color inactiveProgressColor = Color(0XFF89A8B2);
   static const Color primaryButtonColor = Color(0XFFA1045A);
-  static const Color secondaryButtonColor = Color(0XFF8B5DFF);
+  static const Color secondaryButtonColor = Color.fromRGBO(161, 4, 90, 0.4);
   static const Color redButtonColor = Color(0XFFFF6464);
-  static const Color titleTextColor = Color(0XFF021526);
-  static const Color subTitleColor = Color(0XFF2E073F);
-  static const Color contentTextColor = Color(0XFF432E54);
+  static const Color titleTextColor = Color.fromRGBO(45, 48, 52, 1);
+  static const Color subTitleColor = Color(0XFF90969D);
+  static const Color alertTextColor = Color(0XFFF1160D);
   static const Color buttonTextColor = Color(0XFFFFFFFF);
-  static const Color borderColor = Color(0XFFEBD3F8);
+  static const Color textButtonColor = Color(0XFF5D636A);
+  static const Color borderColor = Color(0XFFC6C9CD);
+  static const Color roundButton = Color(0XFFF0F0F0);
 }
