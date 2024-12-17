@@ -91,4 +91,13 @@ class TStyle {
       decoration: TextDecoration.underline,
     );
   }
+
+  static TextStyle forgetPassButton({Color? color, bool whiteText = false}) {
+    return _textReturnElement(
+      color: color ?? (whiteText ? AppColor.termsButtonColor : Colors.grey),
+      fontSize: 14,
+      fontWeight: FontWeight.w700,
+      decoration: TextDecoration.underline,
+    );
+  }
 }
