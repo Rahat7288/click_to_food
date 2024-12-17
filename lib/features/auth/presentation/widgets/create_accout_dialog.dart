@@ -7,7 +7,9 @@ import '../../../../core/reusable_widgets/buttons/primary_button_single_icon.dar
 import '../../../../core/reusable_widgets/buttons/secondary_button_without_icon.dart';
 import '../../../user_registration/presentation/views/otp_screen.dart';
 
-Widget createAccountDialog({required BuildContext context}) => SizedBox(
+Widget createAccountDialog(
+        {required BuildContext context, required String email}) =>
+    SizedBox(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -66,8 +68,10 @@ Widget createAccountDialog({required BuildContext context}) => SizedBox(
                 child: primaryButtonSingleIcon(
                     backgroundColor: AppColor.primaryButtonColor,
                     press: () {
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => OtpScreen()));
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => OtpScreen(
+                                email: email,
+                              )));
                     },
                     buttonName: 'Create Account',
                     postFixIcon: 'assets/icons/mail-01.svg'),

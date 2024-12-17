@@ -33,7 +33,7 @@ class CheckUserStateCubit extends Cubit<CheckUserState> {
         showDialog(
             context: context,
             builder: (BuildContext context) => AlertDialogs(
-                  child: createAccountDialog(context: context),
+                  child: createAccountDialog(context: context, email: email),
                 ));
       }
       emit(state.copyWith(userStatus: value));
