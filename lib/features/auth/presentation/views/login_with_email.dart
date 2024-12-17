@@ -1,22 +1,29 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:click_to_food/core/constants/app_themes/app_colors.dart';
 import 'package:click_to_food/core/constants/text/text_style.dart';
-import 'package:click_to_food/services/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 
 import '../../../../core/reusable_widgets/buttons/primary_button.dart';
 import '../../../../core/reusable_widgets/buttons/round_button.dart';
 import '../../../../core/reusable_widgets/input_fields/custom_text_field.dart';
+import '../../../../services/utils/utils.dart';
 
-class LoginWithEmail extends StatelessWidget {
+class LoginWithEmail extends StatefulWidget {
   const LoginWithEmail({super.key});
 
+  @override
+  State<LoginWithEmail> createState() => _LoginWithEmailState();
+}
+
+class _LoginWithEmailState extends State<LoginWithEmail> {
+  final emailController = TextEditingController();
+  final loginForm = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     final sHeight = MediaQuery.of(context).size.height;
     final sWidth = MediaQuery.of(context).size.width;
-    final emailController = TextEditingController();
-    final loginForm = GlobalKey<FormState>();
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -55,43 +62,55 @@ class LoginWithEmail extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  Text(
-                    'Log in with email',
-                    style: TStyle.title(
-                      color: AppColor.titleTextColor,
+                  FadeInDown(
+                    duration: Duration(milliseconds: 700),
+                    child: Text(
+                      'Log in with email',
+                      style: TStyle.title(
+                        color: AppColor.titleTextColor,
+                      ),
                     ),
                   ),
                   const SizedBox(
                     height: 10,
                   ),
-                  Text(
-                    'Let’s log in into your Click To Food account',
-                    style: TStyle.subTitle2(color: AppColor.subTitleColor),
+                  FadeInDown(
+                    duration: Duration(milliseconds: 800),
+                    child: Text(
+                      'Let’s log in into your Click To Food account',
+                      style: TStyle.subTitle2(color: AppColor.subTitleColor),
+                    ),
                   ),
                   const SizedBox(
                     height: 30,
                   ),
-                  CustomTextField(
-                    controller: emailController,
-                    type: TextInputType.emailAddress,
-                    labelText: 'Enter your email',
-                    hintText: 'example@mail.com',
-                    onChanged: (String value) {},
-                    preIcon: 'assets/icons/mail-01.svg',
+                  FadeInUp(
+                    duration: Duration(milliseconds: 1000),
+                    child: CustomTextField(
+                      controller: emailController,
+                      type: TextInputType.text,
+                      labelText: 'Enter your email',
+                      hintText: 'example@mail.com',
+                      onChanged: (String value) {},
+                      preIcon: 'assets/icons/mail-01.svg',
+                    ),
                   ),
                   const SizedBox(
                     height: 30,
                   ),
-                  primaryButton(
-                    press: () {
-                      if (loginForm.currentState!.validate()) {}
-                    },
-                    buttonName: 'Continue',
-                    width: sWidth,
-                    backgroundColor: AppColor.primaryButtonColor,
-                    foregroundColor: AppColor.buttonTextColor,
-                    prefixIcon: 'assets/icons/mail-01.svg',
-                    postFixIcon: 'assets/icons/mail-01.svg',
+                  FadeInUp(
+                    duration: Duration(milliseconds: 1100),
+                    child: primaryButton(
+                      press: () {
+                        if (loginForm.currentState!.validate()) {}
+                      },
+                      buttonName: 'Continue',
+                      width: sWidth,
+                      backgroundColor: AppColor.primaryButtonColor,
+                      foregroundColor: AppColor.buttonTextColor,
+                      prefixIcon: 'assets/icons/mail-01.svg',
+                      postFixIcon: 'assets/icons/mail-01.svg',
+                    ),
                   ),
                   const SizedBox(
                     height: 30,

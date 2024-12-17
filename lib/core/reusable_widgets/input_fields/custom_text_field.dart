@@ -49,7 +49,7 @@ class CustomTextField extends StatelessWidget with FormValidationMixin {
           )),
       onChanged: onChanged,
       keyboardType: type,
-      validator: validateRequiredFiled,
+      validator: validateEmail,
     );
   }
 }
