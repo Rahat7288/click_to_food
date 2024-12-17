@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/reusable_widgets/buttons/primary_button.dart';
 import '../../../../core/reusable_widgets/buttons/secondary_button.dart';
+import 'login_with_email.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -31,7 +32,10 @@ class LoginScreen extends StatelessWidget {
                 height: sHeight * .45,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage("assets/images/login_banner.png"),
+                    fit: BoxFit.cover,
+                    image: AssetImage(
+                      "assets/images/login_banner.png",
+                    ),
                   ),
                 ),
               ),
@@ -72,7 +76,10 @@ class LoginScreen extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: primaryButton(
-                    press: () {},
+                    press: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: ((context) => LoginWithEmail())));
+                    },
                     buttonName: 'Continue with Email',
                     width: sWidth * .6,
                     backgroundColor: AppColor.primaryButtonColor,

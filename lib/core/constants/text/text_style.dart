@@ -30,7 +30,7 @@ class TStyle {
   }) {
     return _textReturnElement(
       color: color ?? (whiteText ? AppColor.titleTextColor : Colors.black),
-      fontSize: 36,
+      fontSize: 24,
       fontWeight: FontWeight.w700,
     );
   }
@@ -41,6 +41,14 @@ class TStyle {
     return _textReturnElement(
       color: color ?? (whiteText ? AppColor.subTitleColor : Colors.grey),
       fontSize: 20,
+      fontWeight: FontWeight.w700,
+    );
+  }
+
+  static TextStyle subTitle2({Color? color, bool whiteText = false}) {
+    return _textReturnElement(
+      color: color ?? (whiteText ? AppColor.subTitleColor : Colors.grey),
+      fontSize: 14,
       fontWeight: FontWeight.w700,
     );
   }
