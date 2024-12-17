@@ -10,6 +10,7 @@ _textReturnElement({
   double? fontSize,
   double? lineHeight,
   FontWeight? fontWeight,
+  TextDecoration? decoration,
 }) {
   return _textFont(
     color: color,
@@ -79,6 +80,7 @@ class TStyle {
       color: color ?? (whiteText ? AppColor.termsButtonColor : Colors.grey),
       fontSize: 12,
       fontWeight: FontWeight.w700,
+      decoration: TextDecoration.underline,
     );
   }
 }
