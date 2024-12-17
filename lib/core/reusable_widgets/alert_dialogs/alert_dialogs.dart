@@ -1,3 +1,4 @@
+import 'package:click_to_food/core/constants/app_themes/app_colors.dart';
 import 'package:flutter/material.dart';
 
 ///reusable alertDialog
@@ -13,9 +14,10 @@ class AlertDialogs extends StatelessWidget {
     final double mHeight = MediaQuery.of(context).size.height;
     final double mWidth = MediaQuery.of(context).size.width;
     return AlertDialog(
-      insetPadding: const EdgeInsets.all(10),
+      backgroundColor: AppColor.backGroundColor,
+      insetPadding: const EdgeInsets.all(5),
       content: SizedBox(
-        height: mHeight * .4,
+        height: mHeight * .3,
         width: mWidth,
         child: child,
       ),

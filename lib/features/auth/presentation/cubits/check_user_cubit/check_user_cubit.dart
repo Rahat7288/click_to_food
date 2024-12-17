@@ -1,7 +1,10 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/reusable_widgets/alert_dialogs/alert_dialogs.dart';
 import '../../../data/repository_imple/auth_repository_impl.dart';
+import '../../widgets/create_accout_dialog.dart';
 import 'check_user_state.dart';
 
 class CheckUserStateCubit extends Cubit<CheckUserState> {
@@ -24,6 +27,14 @@ class CheckUserStateCubit extends Cubit<CheckUserState> {
         .then((value) {
       if (kDebugMode) {
         print("user exists value $value");
+      }
+
+      if (value.message == 'User Not Found' && value.success == false) {
+        showDialog(
+            context: context,
+            builder: (BuildContext context) => AlertDialogs(
+                  child: createAccountDialog(context: context),
+                ));
       }
       emit(state.copyWith(userStatus: value));
     }).onError((error, something) {

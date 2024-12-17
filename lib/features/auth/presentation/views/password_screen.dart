@@ -141,7 +141,9 @@ class _PasswordScreenState extends State<PasswordScreen> {
                               context
                                   .read<CheckUserStateCubit>()
                                   .checkUserExists(
-                                      email: userEmail, password: userPassword);
+                                      email: userEmail,
+                                      password: userPassword,
+                                      context: context);
                             }
                           },
                           buttonName: 'Log in',
