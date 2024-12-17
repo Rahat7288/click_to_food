@@ -10,6 +10,7 @@ _textReturnElement({
   double? fontSize,
   double? lineHeight,
   FontWeight? fontWeight,
+  TextDecoration? decoration,
 }) {
   return _textFont(
     color: color,
@@ -29,7 +30,7 @@ class TStyle {
   }) {
     return _textReturnElement(
       color: color ?? (whiteText ? AppColor.titleTextColor : Colors.black),
-      fontSize: 36,
+      fontSize: 24,
       fontWeight: FontWeight.w700,
     );
   }
@@ -39,8 +40,16 @@ class TStyle {
   static TextStyle subTitle({Color? color, bool whiteText = false}) {
     return _textReturnElement(
       color: color ?? (whiteText ? AppColor.subTitleColor : Colors.grey),
-      fontSize: 16,
-      fontWeight: FontWeight.w600,
+      fontSize: 20,
+      fontWeight: FontWeight.w700,
+    );
+  }
+
+  static TextStyle subTitle2({Color? color, bool whiteText = false}) {
+    return _textReturnElement(
+      color: color ?? (whiteText ? AppColor.subTitleColor : Colors.grey),
+      fontSize: 14,
+      fontWeight: FontWeight.w700,
     );
   }
 
@@ -50,7 +59,45 @@ class TStyle {
     return _textReturnElement(
       color: color ?? (whiteText ? AppColor.subTitleColor : Colors.black12),
       fontSize: 12,
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w600,
+    );
+  }
+
+  //button text style==========
+
+  static TextStyle buttonText({Color? color, bool whiteText = false}) {
+    return _textReturnElement(
+      color: color ?? (whiteText ? AppColor.buttonTextColor : Colors.black),
+      fontSize: 16,
+      fontWeight: FontWeight.w700,
+    );
+  }
+
+  //terms and conditions text style==========
+
+  static TextStyle terms({Color? color, bool whiteText = false}) {
+    return _textReturnElement(
+      color: color ?? (whiteText ? AppColor.termsTextColor : Colors.grey),
+      fontSize: 12,
+      fontWeight: FontWeight.w600,
+    );
+  }
+
+  static TextStyle termsButton({Color? color, bool whiteText = false}) {
+    return _textReturnElement(
+      color: color ?? (whiteText ? AppColor.termsButtonColor : Colors.grey),
+      fontSize: 12,
+      fontWeight: FontWeight.w700,
+      decoration: TextDecoration.underline,
+    );
+  }
+
+  static TextStyle forgetPassButton({Color? color, bool whiteText = false}) {
+    return _textReturnElement(
+      color: color ?? (whiteText ? AppColor.termsButtonColor : Colors.grey),
+      fontSize: 14,
+      fontWeight: FontWeight.w700,
+      decoration: TextDecoration.underline,
     );
   }
 }
