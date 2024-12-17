@@ -39,8 +39,8 @@ class TStyle {
   static TextStyle subTitle({Color? color, bool whiteText = false}) {
     return _textReturnElement(
       color: color ?? (whiteText ? AppColor.subTitleColor : Colors.grey),
-      fontSize: 16,
-      fontWeight: FontWeight.w600,
+      fontSize: 22,
+      fontWeight: FontWeight.w700,
     );
   }
 
