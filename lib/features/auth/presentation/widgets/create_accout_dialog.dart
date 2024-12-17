@@ -5,6 +5,7 @@ import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 
 import '../../../../core/reusable_widgets/buttons/primary_button_single_icon.dart';
 import '../../../../core/reusable_widgets/buttons/secondary_button_without_icon.dart';
+import '../../../user_registration/presentation/views/otp_screen.dart';
 
 Widget createAccountDialog({required BuildContext context}) => SizedBox(
       child: Column(
@@ -64,7 +65,10 @@ Widget createAccountDialog({required BuildContext context}) => SizedBox(
               Expanded(
                 child: primaryButtonSingleIcon(
                     backgroundColor: AppColor.primaryButtonColor,
-                    press: () {},
+                    press: () {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => OtpScreen()));
+                    },
                     buttonName: 'Create Account',
                     postFixIcon: 'assets/icons/mail-01.svg'),
               )
