@@ -11,7 +11,7 @@ class CheckUserStateCubit extends Cubit<CheckUserState> {
 
   void checkUserExists(
       {context, required String email, required String password}) {
-    final payload = {
+    final Map<String, dynamic> payload = {
       "email": email,
       "password": password,
     };
