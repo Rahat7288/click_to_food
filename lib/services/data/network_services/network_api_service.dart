@@ -15,7 +15,9 @@ class HttpService implements BaseApiService {
   ///
   @override
   Future<dynamic> get(String url,
-      {Map<String, dynamic>? queryParams, Map<String, String>? headers}) async {
+      {Map<String, dynamic>? queryParams,
+      Map<String, String>? headers,
+      context}) async {
     final uri = Uri.parse(url).replace(queryParameters: queryParams);
     final response = await client.get(uri, headers: headers);
     return _handleResponse(response);
@@ -27,7 +29,7 @@ class HttpService implements BaseApiService {
   ///
   @override
   Future<dynamic> post(String url,
-      {dynamic body, Map<String, String>? headers}) async {
+      {dynamic body, Map<String, String>? headers, context}) async {
     final response = await client.post(Uri.parse(url),
         headers: headers, body: jsonEncode(body));
     return _handleResponse(response);
@@ -39,14 +41,15 @@ class HttpService implements BaseApiService {
   ///
   @override
   Future<dynamic> put(String url,
-      {dynamic body, Map<String, String>? headers}) async {
+      {dynamic body, Map<String, String>? headers, context}) async {
     final response = await client.put(Uri.parse(url),
         headers: headers, body: jsonEncode(body));
     return _handleResponse(response);
   }
 
   @override
-  Future<dynamic> delete(String url, {Map<String, String>? headers}) async {
+  Future<dynamic> delete(String url,
+      {Map<String, String>? headers, context}) async {
     final response = await client.delete(Uri.parse(url), headers: headers);
     return _handleResponse(response);
   }

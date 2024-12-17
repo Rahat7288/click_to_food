@@ -43,6 +43,9 @@ class CustomTextField extends StatelessWidget with FormValidationMixin {
             color: AppColor.subTitleColor,
           ),
           hintText: hintText,
+          hintStyle: TextStyle(
+            color: AppColor.subTitleColor,
+          ),
           prefixIcon: Icon(
             Icons.mail_outline_rounded,
             color: AppColor.subTitleColor,

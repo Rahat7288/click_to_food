@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:click_to_food/core/constants/app_themes/app_colors.dart';
 import 'package:click_to_food/core/constants/text/text_style.dart';
+import 'package:click_to_food/features/auth/presentation/views/password_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 
@@ -17,8 +18,8 @@ class LoginWithEmail extends StatefulWidget {
 }
 
 class _LoginWithEmailState extends State<LoginWithEmail> {
-  final emailController = TextEditingController();
-  final loginForm = GlobalKey<FormState>();
+  final _emailController = TextEditingController();
+  final _loginForm = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     final sHeight = MediaQuery.of(context).size.height;
@@ -43,7 +44,7 @@ class _LoginWithEmailState extends State<LoginWithEmail> {
           ),
         ),
         body: Form(
-          key: loginForm,
+          key: _loginForm,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: SingleChildScrollView(
@@ -87,7 +88,7 @@ class _LoginWithEmailState extends State<LoginWithEmail> {
                   FadeInUp(
                     duration: Duration(milliseconds: 1000),
                     child: CustomTextField(
-                      controller: emailController,
+                      controller: _emailController,
                       type: TextInputType.text,
                       labelText: 'Enter your email',
                       hintText: 'example@mail.com',
@@ -102,7 +103,13 @@ class _LoginWithEmailState extends State<LoginWithEmail> {
                     duration: Duration(milliseconds: 1100),
                     child: primaryButton(
                       press: () {
-                        if (loginForm.currentState!.validate()) {}
+                        if (_loginForm.currentState!.validate()) {
+                          final email = _emailController.text;
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => PasswordScreen(
+                                    email: email,
+                                  )));
+                        }
                       },
                       buttonName: 'Continue',
                       width: sWidth,
