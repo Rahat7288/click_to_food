@@ -4,6 +4,7 @@ import 'package:click_to_food/core/constants/text/text_style.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/reusable_widgets/buttons/primary_button.dart';
+import '../../../../core/reusable_widgets/buttons/secondary_button.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -63,7 +64,7 @@ class LoginScreen extends StatelessWidget {
               ),
             ),
             Positioned(
-              top: sHeight * .53,
+              top: sHeight * .5,
               left: 0,
               right: 0,
               child: FadeInUp(
@@ -83,7 +84,7 @@ class LoginScreen extends StatelessWidget {
               ),
             ),
             Positioned(
-              top: sHeight * .6,
+              top: sHeight * .58,
               left: 0,
               right: 0,
               child: FadeInUp(
@@ -97,13 +98,56 @@ class LoginScreen extends StatelessWidget {
                             Divider(thickness: 2, color: AppColor.borderColor),
                       ),
                       const SizedBox(width: 5),
-                      Text('or'),
+                      Text(
+                        'or',
+                        style:
+                            TStyle.contentText(color: AppColor.subTitleColor),
+                      ),
                       const SizedBox(width: 5),
                       Expanded(
                         child:
                             Divider(thickness: 2, color: AppColor.borderColor),
                       ),
                     ],
+                  ),
+                ),
+              ),
+            ),
+
+            //google sign in button============
+            Positioned(
+              top: sHeight * .63,
+              child: FadeInUp(
+                duration: Duration(milliseconds: 1200),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 15),
+                  child: secondaryButton(
+                    press: () {},
+                    buttonName: 'Continue with Google',
+                    width: sWidth * .92,
+                    backgroundColor: AppColor.backGroundColor,
+                    foregroundColor: AppColor.buttonTextColor,
+                    prefixIcon: 'assets/icons/google.svg',
+                    // postFixIcon: 'assets/icons/google.svg',
+                  ),
+                ),
+              ),
+            ),
+            //apple login============
+            Positioned(
+              top: sHeight * .72,
+              child: FadeInUp(
+                duration: Duration(milliseconds: 1250),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 15),
+                  child: secondaryButton(
+                    press: () {},
+                    buttonName: 'Continue with Apple',
+                    width: sWidth * .92,
+                    backgroundColor: AppColor.backGroundColor,
+                    foregroundColor: AppColor.buttonTextColor,
+                    prefixIcon: 'assets/icons/apple.svg',
+                    // postFixIcon: 'assets/icons/google.svg',
                   ),
                 ),
               ),

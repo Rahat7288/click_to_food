@@ -1,9 +1,10 @@
-import 'package:click_to_food/core/constants/app_themes/app_colors.dart';
-import 'package:click_to_food/core/constants/text/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 
-Widget primaryButton(
+import '../../constants/app_themes/app_colors.dart';
+import '../../constants/text/text_style.dart';
+
+Widget secondaryButton(
         {required Function() press,
         required String buttonName,
         String? prefixIcon,
@@ -13,14 +14,22 @@ Widget primaryButton(
         double? radius,
         height,
         width}) =>
-    SizedBox(
-      height: height ?? 50,
+    Container(
+      decoration: BoxDecoration(
+        border: Border.all(
+          width: 1,
+          color: AppColor.borderColor,
+          style: BorderStyle.solid,
+        ),
+        borderRadius: BorderRadius.circular(50),
+      ),
       width: width ?? 200,
+      height: height ?? 50,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: backgroundColor,
+          backgroundColor: backgroundColor ?? AppColor.backGroundColor,
           foregroundColor: foregroundColor,
-          elevation: 1,
+          elevation: 0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(radius ?? 50),
           ),
@@ -39,15 +48,11 @@ Widget primaryButton(
             Text(
               buttonName,
               style: TStyle.buttonText(
-                color: AppColor.buttonTextColor,
+                color: AppColor.titleTextColor,
               ),
             ),
-            SizedBox(
-              height: 24,
-              width: 24,
-              child: Image(
-                image: Svg(postFixIcon ?? ''),
-              ),
+            const SizedBox(
+              width: 5,
             ),
           ],
         ),

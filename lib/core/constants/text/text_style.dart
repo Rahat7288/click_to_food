@@ -49,8 +49,18 @@ class TStyle {
   static TextStyle contentText({Color? color, bool whiteText = false}) {
     return _textReturnElement(
       color: color ?? (whiteText ? AppColor.subTitleColor : Colors.black12),
-      fontSize: 12,
-      fontWeight: FontWeight.w400,
+      fontSize: 15,
+      fontWeight: FontWeight.w600,
+    );
+  }
+
+  //button text style==========
+
+  static TextStyle buttonText({Color? color, bool whiteText = false}) {
+    return _textReturnElement(
+      color: color ?? (whiteText ? AppColor.buttonTextColor : Colors.black),
+      fontSize: 16,
+      fontWeight: FontWeight.w700,
     );
   }
 }
