@@ -33,7 +33,7 @@ Widget primaryButton(
               height: 24,
               width: 24,
               child: Image(
-                image: Svg(prefixIcon ?? ''),
+                image: Svg(prefixIcon ?? '', color: AppColor.backGroundColor),
               ),
             ),
             Text(
@@ -46,7 +46,7 @@ Widget primaryButton(
               height: 24,
               width: 24,
               child: Image(
-                image: Svg(postFixIcon ?? ''),
+                image: Svg(postFixIcon ?? '', color: AppColor.backGroundColor),
               ),
             ),
           ],

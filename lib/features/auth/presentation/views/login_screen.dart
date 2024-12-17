@@ -152,6 +152,70 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
             ),
+
+            //terms and conditions============
+            Positioned(
+              top: sHeight * .9,
+              right: 0,
+              left: 0,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    'By clicking, you accept our',
+                    textAlign: TextAlign.center,
+                    style: TStyle.terms(),
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    style: TextButton.styleFrom(
+                      padding: EdgeInsets.symmetric(horizontal: 2),
+                    ),
+                    child: Text(
+                      'Terms and Conditions,',
+                      style: TStyle.termsButton(),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Positioned(
+              top: sHeight * .92,
+              right: 0,
+              left: 0,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  TextButton(
+                    onPressed: () {},
+                    style: TextButton.styleFrom(
+                      padding: EdgeInsets.symmetric(horizontal: 2),
+                    ),
+                    child: Text(
+                      'Privacy Policy',
+                      style: TStyle.termsButton(),
+                    ),
+                  ),
+                  Text(
+                    'and',
+                    textAlign: TextAlign.center,
+                    style: TStyle.terms(),
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    style: TextButton.styleFrom(
+                      padding: EdgeInsets.symmetric(horizontal: 2),
+                    ),
+                    child: Text(
+                      'Cookies Policy',
+                      style: TStyle.termsButton(),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
