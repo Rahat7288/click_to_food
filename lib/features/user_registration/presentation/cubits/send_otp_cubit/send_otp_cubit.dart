@@ -12,6 +12,7 @@ class SendOTPCubit extends Cubit<SendOTPState> {
 
   final _otpRepositoryImpl = OTPRepositoryImpl();
 
+  ///send OTP to user email address=========
   void sendOTP({context, userEmail}) {
     final Map<String, dynamic> payload = {
       "email": userEmail,
