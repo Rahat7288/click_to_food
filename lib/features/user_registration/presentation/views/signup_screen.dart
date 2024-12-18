@@ -59,15 +59,13 @@ class _SignupScreenState extends State<SignupScreen> {
                     "Personal Information",
                     style: TStyle.title(color: AppColor.titleTextColor),
                   ),
-                  const SizedBox(
-                    height: 15,
-                  ),
+
                   Text(
                     'Please provide us your information to continue',
                     style: TStyle.subTitle2(color: AppColor.subTitleColor),
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: 5,
                   ),
                   FadeInUp(
                     duration: Duration(milliseconds: 1000),
