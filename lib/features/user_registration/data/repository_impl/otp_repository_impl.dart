@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import '../../../../services/data/network_services/network_api_service.dart';
 import '../../domain/repository/otp_repository.dart';
 import '../models/send_otp_model.dart';
+import '../models/verify_otp_model.dart';
 
 class OTPRepositoryImpl implements OTPRepository {
   final _networkService = HttpService();
@@ -22,14 +23,14 @@ class OTPRepositoryImpl implements OTPRepository {
   }
 
   @override
-  Future<dynamic> verifyOTP({context, payload, header}) async {
+  Future<VerifyOtpModel> verifyOTP({context, payload, header}) async {
     try {
       final response = await _networkService.post(AppUrls.checkOTPFromEmail,
           body: payload, headers: header, context: context);
       if (kDebugMode) {
         print("OTP verification response $response");
       }
-      return response;
+      return VerifyOtpModel.fromJson(response);
     } catch (e) {
       rethrow;
     }
