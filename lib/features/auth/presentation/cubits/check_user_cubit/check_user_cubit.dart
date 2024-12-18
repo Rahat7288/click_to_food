@@ -15,6 +15,8 @@ class CheckUserStateCubit extends Cubit<CheckUserState> {
 
   final loginCubit = LoginCubit();
 
+  bool userValid = false;
+
   void checkUserExists(
       {context, required String email, required String password}) {
     final Map<String, dynamic> payload = {
@@ -44,6 +46,24 @@ class CheckUserStateCubit extends Cubit<CheckUserState> {
       emit(state.copyWith(userStatus: value));
     }).onError((error, stackTrace) {
       throw "Something went wrong: $error";
+    });
+  }
+
+  void checkUser({required String userEmail, context}) {
+    final Map<String, dynamic> payload = {
+      "email": userEmail,
+    };
+    const header = {
+      "Content-Type": "application/json",
+    };
+    _checkUserRepoImpl
+        .checkUserExists(context: context, payload: payload, header: header)
+        .then((value) {
+      if (value.message == "User Already Exists") {
+        userValid = true;
+      }
+    }).onError((error, stackTrack) {
+      throw "something went wrong";
     });
   }
 }

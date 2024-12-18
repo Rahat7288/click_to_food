@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'features/auth/presentation/cubits/check_user_cubit/check_user_cubit.dart';
 import 'features/auth/presentation/cubits/login_cubit/login_cubit.dart';
 import 'features/auth/presentation/views/login_screen.dart';
+import 'features/forget_password/presentation/cubits/forget_password_cubit.dart';
 import 'features/otp_management/presentation/cubits/send_otp_cubit/send_otp_cubit.dart';
 import 'features/user_registration/presentation/cubits/save_user_cubit/save_user_cubit.dart';
 
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => LoginCubit()),
         BlocProvider(create: (context) => SendOTPCubit()),
         BlocProvider(create: (context) => SaveUserCubit()),
+        BlocProvider(create: (context) => ForgetPasswrodCubit()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
