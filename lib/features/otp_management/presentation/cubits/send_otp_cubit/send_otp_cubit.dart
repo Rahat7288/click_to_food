@@ -70,6 +70,7 @@ class SendOTPCubit extends Cubit<SendOTPState> {
           MaterialPageRoute(
             builder: (context) => SignupScreen(
               userEmail: userEmail,
+              userotp: otp,
             ),
           ),
         );

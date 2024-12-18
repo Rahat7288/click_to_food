@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import '../../../../services/data/network_services/network_api_service.dart';
 import '../../domain/repository/auth_repository.dart';
 import '../models/check_user_exist_model.dart';
+import '../models/login_model.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final _networkService = HttpService();
@@ -26,9 +27,14 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<dynamic> userLogin({context, payload, header}) async {
-    // TODO: implement userLogin
-    throw UnimplementedError();
+  Future<LoginModel> userLogin({context, payload, header}) async {
+    try {
+      final response = await _networkService.post(AppUrls.login,
+          body: payload, headers: header, context: context);
+      return LoginModel.fromJson(response);
+    } catch (e) {
+      rethrow;
+    }
   }
 
   @override

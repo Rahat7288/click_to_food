@@ -9,8 +9,11 @@ class UserRegisterRepositoryImpl implements UserRegisterRepository {
   @override
   Future<dynamic> saveUser({context, payload, header}) async {
     try {
-      final response = await _networkService.post(AppUrls.saveUser,
-          context: context, body: payload, headers: header);
+      final response = await _networkService.post(
+          AppUrls.regiserAfterOtpVerification,
+          context: context,
+          body: payload,
+          headers: header);
       if (kDebugMode) {
         print("suve user response $response");
       }

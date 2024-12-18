@@ -10,8 +10,10 @@ import '../../../../core/reusable_widgets/input_fields/custom_password_field.dar
 import '../../../../core/reusable_widgets/input_fields/custom_text_field.dart';
 
 class SignupScreen extends StatefulWidget {
-  const SignupScreen({super.key, required this.userEmail});
+  const SignupScreen(
+      {super.key, required this.userEmail, required this.userotp});
   final String userEmail;
+  final String userotp;
 
   @override
   State<SignupScreen> createState() => _SignupScreenState();
