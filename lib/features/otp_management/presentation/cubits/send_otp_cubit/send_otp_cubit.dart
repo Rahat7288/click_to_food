@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../user_registration/presentation/views/signup_screen.dart';
 import '../../../data/repository_impl/otp_repository_impl.dart';
 import '../../views/otp_screen.dart';
 import 'send_otp_state.dart';
@@ -65,9 +66,15 @@ class SendOTPCubit extends Cubit<SendOTPState> {
       }
 
       if (value.message == 'OTP has Matched.') {
-        Utils.toastMessage("OTP has Matched.");
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => SignupScreen(),
+          ),
+        );
+      } else {
+        Utils.toastMessage("Wrong OTP");
       }
-    }).onError((error, stackTrece) {
+    }).onError((error, stackTrace) {
       throw "OTP verification error ${error.toString()}";
     });
   }
