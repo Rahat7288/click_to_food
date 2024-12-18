@@ -11,4 +11,5 @@ class AppUrls {
   static const String saveUser = '$baseUrl/Administrator/SaveUser';
   static const String regiserAfterOtpVerification =
       '$baseUrl/Administrator/RegisterAfterOTPMatched';
+  static const String forgetPassword = "$baseUrl/Administrator/ForgetPassword";
 }
