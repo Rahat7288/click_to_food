@@ -6,8 +6,8 @@ import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 
 import '../../../../core/reusable_widgets/buttons/primary_button_single_icon.dart';
 import '../../../../core/reusable_widgets/buttons/secondary_button_without_icon.dart';
-import '../../../user_registration/presentation/cubits/send_otp_cubit/send_otp_cubit.dart';
-import '../../../user_registration/presentation/cubits/send_otp_cubit/send_otp_state.dart';
+import '../../../otp_management/presentation/cubits/send_otp_cubit/send_otp_cubit.dart';
+import '../../../otp_management/presentation/cubits/send_otp_cubit/send_otp_state.dart';
 
 Widget createAccountDialog(
         {required BuildContext context, required String email}) =>
