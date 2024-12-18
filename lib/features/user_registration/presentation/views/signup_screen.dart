@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:click_to_food/core/constants/text/text_style.dart';
 import 'package:click_to_food/services/utils/utils.dart';
+import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/constants/app_themes/app_colors.dart';
@@ -24,6 +25,10 @@ class _SignupScreenState extends State<SignupScreen> {
   final _confirmPasswordController = TextEditingController();
   final _registrationForm = GlobalKey<FormState>();
   bool isObscure = true;
+
+  final countryPicker =
+      const FlCountryCodePicker(); // Initialize the country picker
+  CountryCode? _selectedCountry; // Holds the selected country
   @override
   Widget build(BuildContext context) {
     final sHeight = MediaQuery.of(context).size.height;
@@ -92,6 +97,59 @@ class _SignupScreenState extends State<SignupScreen> {
                       preIcon: Icons.email_outlined,
                     ),
                   ),
+
+                  ///phone number section===============
+                  FadeInUp(
+                    duration: Duration(milliseconds: 1000),
+                    child: TextFormField(
+                      controller: _phoneNumberController,
+                      keyboardType: TextInputType.phone,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(50)),
+                        hintText: 'Enter phone number',
+                        hintStyle: TextStyle(
+                          color: AppColor.subTitleColor,
+                        ),
+                        prefixIcon: GestureDetector(
+                          onTap: () async {
+                            // Open the country picker dialog
+                            final country = await countryPicker.showPicker(
+                                context: context);
+                            if (country != null) {
+                              setState(() {
+                                _selectedCountry = country;
+                              });
+                            }
+                          },
+                          child: Container(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 10.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                if (_selectedCountry != null) ...[
+                                  Text(
+                                    _selectedCountry!
+                                        .dialCode, // Display country code
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        color: AppColor.titleTextColor,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ] else
+                                  const Text(
+                                    '+',
+                                    style: TextStyle(fontSize: 16),
+                                  ),
+                                const Icon(Icons.arrow_drop_down),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                   FadeInUp(
                     duration: Duration(milliseconds: 1000),
                     child: CustomPasswordField(
@@ -129,6 +187,10 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                   ),
 
+                  SizedBox(
+                    height: sHeight * .4,
+                  ),
+
                   primaryButtonSingleIcon(
                       width: sWidth,
                       backgroundColor: AppColor.primaryButtonColor,
@@ -143,4 +205,6 @@ class _SignupScreenState extends State<SignupScreen> {
       ),
     );
   }
+
+  /// Shows the Country Code Picker dialog
 }
