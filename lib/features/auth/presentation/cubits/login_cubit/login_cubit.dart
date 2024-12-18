@@ -22,8 +22,8 @@ class LoginCubit extends Cubit<LoginState> {
     _authRepoImple
         .userLogin(context: context, header: header, payload: payload)
         .then((value) {
-      Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => HomeScreen()));
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => HomeScreen()));
       emit(state.copyWith(loginModel: value));
     }).onError((error, stackTrace) {
       Utils.toastMessage("Invalid Credentials");

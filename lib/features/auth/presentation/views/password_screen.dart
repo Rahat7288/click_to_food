@@ -9,6 +9,7 @@ import '../../../../core/constants/text/text_style.dart';
 import '../../../../core/reusable_widgets/buttons/primary_button.dart';
 import '../../../../core/reusable_widgets/buttons/round_button.dart';
 import '../../../../core/reusable_widgets/input_fields/custom_password_field.dart';
+import '../../../forget_password/presentation/views/forget_password_screen.dart';
 import '../cubits/check_user_cubit/check_user_cubit.dart';
 import '../cubits/check_user_cubit/check_user_state.dart';
 
@@ -124,7 +125,11 @@ class _PasswordScreenState extends State<PasswordScreen> {
                         child: FadeInLeft(
                           duration: Duration(milliseconds: 1100),
                           child: TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) =>
+                                        ForgetPasswordScreen()));
+                              },
                               child: Text(
                                 textAlign: TextAlign.center,
                                 'forget password?',

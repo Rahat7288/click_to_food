@@ -3,6 +3,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../auth/presentation/cubits/check_user_cubit/check_user_cubit.dart';
+import '../../../../forget_password/presentation/views/password_upgrade_screen.dart';
 import '../../../../user_registration/presentation/views/signup_screen.dart';
 import '../../../data/repository_impl/otp_repository_impl.dart';
 import '../../views/otp_screen.dart';
@@ -12,6 +14,7 @@ class SendOTPCubit extends Cubit<SendOTPState> {
   SendOTPCubit() : super(SendOTPState());
 
   final _otpRepositoryImpl = OTPRepositoryImpl();
+  final _checkUser = CheckUserStateCubit();
 
   ///send OTP to user email address=========
   void sendOTP({context, userEmail}) {
@@ -66,14 +69,18 @@ class SendOTPCubit extends Cubit<SendOTPState> {
       }
 
       if (value.message == 'OTP has Matched.') {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => SignupScreen(
-              userEmail: userEmail,
-              userotp: otp,
-            ),
-          ),
-        );
+        _checkUser.checkUser(userEmail: userEmail, context: context);
+        _checkUser.userValid
+            ? Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => PasswordUpgradeScreen()))
+            : Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => SignupScreen(
+                    userEmail: userEmail,
+                    userotp: otp,
+                  ),
+                ),
+              );
       } else {
         Utils.toastMessage("Wrong OTP");
       }
