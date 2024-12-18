@@ -5,12 +5,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/reusable_widgets/alert_dialogs/alert_dialogs.dart';
 import '../../../data/repository_imple/auth_repository_impl.dart';
 import '../../widgets/create_accout_dialog.dart';
+import '../login_cubit/login_cubit.dart';
 import 'check_user_state.dart';
 
 class CheckUserStateCubit extends Cubit<CheckUserState> {
   CheckUserStateCubit() : super(CheckUserState());
 
   final _checkUserRepoImpl = AuthRepositoryImpl();
+
+  final loginCubit = LoginCubit();
 
   void checkUserExists(
       {context, required String email, required String password}) {
@@ -35,6 +38,8 @@ class CheckUserStateCubit extends Cubit<CheckUserState> {
             builder: (BuildContext context) => AlertDialogs(
                   child: createAccountDialog(context: context, email: email),
                 ));
+      } else {
+        loginCubit.login(context: context, email: email, password: password);
       }
       emit(state.copyWith(userStatus: value));
     }).onError((error, stackTrace) {
