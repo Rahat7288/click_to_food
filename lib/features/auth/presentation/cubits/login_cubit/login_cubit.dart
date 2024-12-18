@@ -1,3 +1,4 @@
+import 'package:click_to_food/services/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -25,7 +26,7 @@ class LoginCubit extends Cubit<LoginState> {
           .push(MaterialPageRoute(builder: (context) => HomeScreen()));
       emit(state.copyWith(loginModel: value));
     }).onError((error, stackTrace) {
-      throw "login failed with error ${error.toString()}";
+      Utils.toastMessage("Invalid Credentials");
     });
   }
 }
