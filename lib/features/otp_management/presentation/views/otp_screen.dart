@@ -259,7 +259,9 @@ class _OtpScreenState extends State<OtpScreen> {
                                 if (_formKey.currentState!.validate()) {
                                   final otp = pinController.text;
                                   context.read<SendOTPCubit>().verifyOTP(
-                                      userEmail: widget.email, otp: otp);
+                                      userEmail: widget.email,
+                                      otp: otp,
+                                      context: context);
                                 }
                               }
                             : () {},
