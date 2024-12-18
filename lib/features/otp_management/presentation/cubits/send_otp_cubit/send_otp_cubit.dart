@@ -62,7 +62,7 @@ class SendOTPCubit extends Cubit<SendOTPState> {
         .verifyOTP(context: context, payload: payload, header: header)
         .then((value) {
       if (kDebugMode) {
-        print("OTP verification response $value");
+        print("OTP verification response ${value.message}");
       }
 
       if (value.message == 'OTP has Matched.') {

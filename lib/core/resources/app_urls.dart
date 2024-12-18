@@ -8,4 +8,7 @@ class AppUrls {
   static const String sendOTPEmail = "$baseUrl/Administrator/SendOTPToEmail";
   static const String checkOTPFromEmail =
       "$baseUrl/Administrator/CheckOTPFromEmail";
+  static const String saveUser = '$baseUrl/Administrator/SaveUser';
+  static const String regiserAfterOtpVerification =
+      '$baseUrl/Administrator/RegisterAfterOTPMatched';
 }
