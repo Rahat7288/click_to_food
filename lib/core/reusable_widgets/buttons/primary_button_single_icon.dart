@@ -26,12 +26,17 @@ Widget primaryButtonSingleIcon(
         ),
         onPressed: press,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              buttonName,
-              style: TStyle.subTitle2(
-                color: AppColor.buttonTextColor,
+            Expanded(
+              child: Text(
+                textAlign: TextAlign.center,
+                buttonName,
+                style: TStyle.subTitle2(
+                  color: AppColor.buttonTextColor,
+                ),
               ),
             ),
             SizedBox(

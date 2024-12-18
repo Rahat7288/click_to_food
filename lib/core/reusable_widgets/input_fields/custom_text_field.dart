@@ -18,7 +18,7 @@ class CustomTextField extends StatelessWidget with FormValidationMixin {
   final String labelText;
   final String hintText;
   final ValueChanged<String> onChanged;
-  final String preIcon;
+  final IconData? preIcon;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -47,6 +47,7 @@ class CustomTextField extends StatelessWidget with FormValidationMixin {
             color: AppColor.subTitleColor,
           ),
           prefixIcon: Icon(
+            preIcon ??
             Icons.mail_outline_rounded,
             color: AppColor.subTitleColor,
           )),

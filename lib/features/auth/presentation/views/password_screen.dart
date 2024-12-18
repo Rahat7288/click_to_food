@@ -23,11 +23,17 @@ class _PasswordScreenState extends State<PasswordScreen> {
   final _passwordController = TextEditingController();
   final _formController = GlobalKey<FormState>();
   bool isObscure = true;
+  @override
+  void dispose() {
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     final sHeight = MediaQuery.of(context).size.height;
     final sWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       backgroundColor: AppColor.backGroundColor,
       appBar: AppBar(

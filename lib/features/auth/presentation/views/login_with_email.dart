@@ -20,6 +20,13 @@ class LoginWithEmail extends StatefulWidget {
 class _LoginWithEmailState extends State<LoginWithEmail> {
   final _emailController = TextEditingController();
   final _loginForm = GlobalKey<FormState>();
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final sHeight = MediaQuery.of(context).size.height;
@@ -93,7 +100,7 @@ class _LoginWithEmailState extends State<LoginWithEmail> {
                       labelText: 'Enter your email',
                       hintText: 'example@mail.com',
                       onChanged: (String value) {},
-                      preIcon: 'assets/icons/mail-01.svg',
+                      preIcon: Icons.email_outlined,
                     ),
                   ),
                   const SizedBox(
