@@ -68,7 +68,9 @@ class SendOTPCubit extends Cubit<SendOTPState> {
       if (value.message == 'OTP has Matched.') {
         Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (context) => SignupScreen(),
+            builder: (context) => SignupScreen(
+              userEmail: userEmail,
+            ),
           ),
         );
       } else {

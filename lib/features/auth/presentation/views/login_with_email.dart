@@ -100,7 +100,7 @@ class _LoginWithEmailState extends State<LoginWithEmail> {
                       labelText: 'Enter your email',
                       hintText: 'example@mail.com',
                       onChanged: (String value) {},
-                      preIcon: 'assets/icons/mail-01.svg',
+                      preIcon: Icons.email_outlined,
                     ),
                   ),
                   const SizedBox(
