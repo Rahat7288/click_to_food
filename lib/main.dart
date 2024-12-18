@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'features/auth/presentation/cubits/check_user_cubit/check_user_cubit.dart';
 import 'features/auth/presentation/views/login_screen.dart';
+import 'features/user_registration/presentation/cubits/send_otp_cubit/send_otp_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocListener(
       listeners: [
         BlocProvider(create: (context) => CheckUserStateCubit()),
+        BlocProvider(create: (context) => SendOTPCubit()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

@@ -37,7 +37,7 @@ class CheckUserStateCubit extends Cubit<CheckUserState> {
                 ));
       }
       emit(state.copyWith(userStatus: value));
-    }).onError((error, something) {
+    }).onError((error, stackTrace) {
       throw "Something went wrong: $error";
     });
   }
