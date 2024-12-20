@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/reusable_widgets/alert_dialogs/alert_dialogs.dart';
+import '../../../../../services/data/local_services/local_service.dart';
 import '../../../data/repository_imple/auth_repository_impl.dart';
 import '../../widgets/create_accout_dialog.dart';
 import '../login_cubit/login_cubit.dart';
@@ -12,6 +13,7 @@ class CheckUserStateCubit extends Cubit<CheckUserState> {
   CheckUserStateCubit() : super(CheckUserState());
 
   final _checkUserRepoImpl = AuthRepositoryImpl();
+  final localService = StorageService();
 
   final loginCubit = LoginCubit();
 
@@ -35,6 +37,7 @@ class CheckUserStateCubit extends Cubit<CheckUserState> {
       }
 
       if (value.message == 'User Not Found' && value.success == false) {
+        localService.setExistence(isUser: false);
         showDialog(
             context: context,
             builder: (BuildContext context) => AlertDialogs(

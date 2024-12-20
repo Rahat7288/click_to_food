@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../services/data/local_services/local_service.dart';
 import '../../../../auth/presentation/cubits/check_user_cubit/check_user_cubit.dart';
 import '../../../../forget_password/presentation/views/password_upgrade_screen.dart';
 import '../../../../user_registration/presentation/views/signup_screen.dart';
@@ -14,7 +15,8 @@ class SendOTPCubit extends Cubit<SendOTPState> {
   SendOTPCubit() : super(SendOTPState());
 
   final _otpRepositoryImpl = OTPRepositoryImpl();
-  final _checkUser = CheckUserStateCubit();
+  // final _checkUser = CheckUserStateCubit();
+  final _loclService = StorageService();
 
   ///send OTP to user email address=========
   void sendOTP({context, userEmail}) {
@@ -61,6 +63,8 @@ class SendOTPCubit extends Cubit<SendOTPState> {
       "Content-Type": "application/json",
     };
 
+    final userExist = _loclService.getExistence();
+
     _otpRepositoryImpl
         .verifyOTP(context: context, payload: payload, header: header)
         .then((value) {
@@ -68,19 +72,18 @@ class SendOTPCubit extends Cubit<SendOTPState> {
         print("OTP verification response ${value.message}");
       }
 
-      if (value.message == 'OTP has Matched.') {
-        _checkUser.checkUser(userEmail: userEmail, context: context);
-        _checkUser.userValid
-            ? Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => PasswordUpgradeScreen()))
-            : Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => SignupScreen(
-                    userEmail: userEmail,
-                    userotp: otp,
-                  ),
-                ),
-              );
+      if (value.message == 'OTP has Matched.' && userExist == false) {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => SignupScreen(
+              userEmail: userEmail,
+              userotp: otp,
+            ),
+          ),
+        );
+      } else if (value.message == 'OTP has Matched.' && userExist == true) {
+        Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => PasswordUpgradeScreen()));
       } else {
         Utils.toastMessage("Wrong OTP");
       }
