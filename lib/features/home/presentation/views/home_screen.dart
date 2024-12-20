@@ -1,13 +1,20 @@
 import 'package:click_to_food/core/constants/app_themes/app_colors.dart';
 import 'package:click_to_food/core/constants/text/text_style.dart';
+import 'package:click_to_food/core/reusable_widgets/drawer/app_drawer.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+import '../../../../core/reusable_widgets/buttons/round_button.dart';
 
+class HomeScreen extends StatelessWidget {
+  HomeScreen({super.key});
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
+      endDrawer: Drawer(
+        child: appDrawer(context: context),
+      ),
       appBar: AppBar(
         backgroundColor: AppColor.primaryButtonColor,
         leadingWidth: 200,
@@ -43,18 +50,21 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         actions: [
-          IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.notifications,
-                color: AppColor.backGroundColor,
-              )),
-          IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.menu,
-                color: AppColor.backGroundColor,
-              )),
+          roundButton(
+            press: () {},
+            icon: 'assets/icons/bell-bing.svg',
+          ),
+          const SizedBox(
+            width: 10,
+          ),
+          roundButton(
+              press: () {
+                _scaffoldKey.currentState?.openEndDrawer();
+              },
+              icon: 'assets/icons/menu.svg'),
+          const SizedBox(
+            width: 10,
+          ),
         ],
       ),
       body: Padding(
